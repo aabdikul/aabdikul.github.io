@@ -1,11 +1,11 @@
 # Site settings
 author: Aida Abdikulova
-title: 
+title: Aida Abdikulova's Blog
 header-img: img/home-bg.png
 email: abdikulova@gmail.com
 copyright_name: Aida Abdikulova
 description: > # this means to ignore newlines until "baseurl:"
-  
+  Blogging a journey to learn how to code.
 baseurl: "" # the subpath of your site, e.g. /blog
 twitter_username: 
 github_username:  aabdikul
