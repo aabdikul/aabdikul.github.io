@@ -1,12 +1,12 @@
 ---
 layout: post
 title:      "A Brief Visit to Core Object Oriented Ruby Concepts"
-date:       2019-09-01 22:29:12 +0000
+date:       2019-09-01 18:29:12 -0400
 permalink:  a_brief_visit_to_core_object_oriented_ruby_concepts
 ---
 
 
-We first learned Ruby from a Procedural standpoint: basic methods, hashes, and arrays. This was a great introduction into the next step: Object Oriented Ruby (OO). OO Ruby functions at the class level with classes including within them various methods and different kinds of variables. With that said, I'll be walking through, with examples, the most common types of variables, methods, and their scopes. Let's begin with variables. 
+We first learned Ruby from a Procedural standpoint: basic methods, hashes, and arrays. This was a great introduction into the next step: Object Oriented Ruby (OO). OO Ruby abstracts from procedural Ruby by interacting directly with the way that Ruby processes data types themselves; in other words, we are creating "classes" of data on which to program. These classes can include methods and variables with different scopes (i.e. class, local, and instance variables). With that said, I'll be walking through, with examples, the most common types of variables, methods, and their scopes. Let's begin with variables. 
 
 A variable can be thought of as a placeholder for information within a program. It's the programming world's "blank" in a Mad Lib. There are a few types of different variables that exist within a class. 
 
@@ -16,23 +16,24 @@ A variable can be thought of as a placeholder for information within a program. 
 aida = "Aida" 
 ```
 
-The above signifies a local variable - it can only be used in the session you're currently in when coding in an IDE, for example. This presents limitations as it doesn't allow a user the flexibility of using this variable going forward. 
+The above signifies a local variable - it can only be used in the runtime session of the block of code that your program is currently running. This presents limitations as it doesn't allow a user the flexibility of using this variable going forward. In other words, once the program is done running, "poof!" the variable is gone. 
 
 **Instance Variables**
 
-Instance variables solve for the limitations of local variables because they give a user the flexibility to use that variable in all methods within a class. It is exemplifed with the symbol "@". This is great when multiple methods use the same variable. If we look at the below snippet of code, we can illustrate this concept. 
+Instance variables solve for the limitations of local variables because they give a user the flexibility to use that variable in all methods within a class. Instance variables are instantiated with the symbol "@". This showcases its power when multiple methods use the same variable. If we look at the below snippet of code, we can illustrate this concept. 
 
 ```
 class Person
 
 attr_accessor: name 
+@name = "Aida"
 
 def hi 
-puts "Hi!" 
+puts "Hi #{@name}!" 
 end
 
 def bye
-puts "Bye!"
+puts "Bye #{@name}!"
 end
 
 end
@@ -42,16 +43,16 @@ aida.hi
 aida.bye 
 ```
 
-Looking at this very simplified code, I can see that I'm creating a new class, "Person". Within that person class, I have a setter and getter method (we will get into this later). Then, I have the simple methods, "hi" and "bye". In this code, "aida" becomes a new instance of the person class because I'm creating that instance by invoking the `.new` method. Once I've created this instance, I can then have this instance variable (aida) leverage the methods in that class `.bye` and `.hi`. When I use these methods, I'll receive the below result in my terminal: 
+Looking at this very simplified code, one can see that I'm creating a new class, "Person". Within that person class, I have a setter and getter method (we will get into this later). Then, I have the simple methods, "hi" and "bye". In this code, "aida" becomes a new instance of the person class because I'm creating that instance by invoking the `.new` method. Once I've created this instance, I can then have this instance variable (aida) leverage the methods in that class `.bye` and `.hi`. When I use these methods, I'll receive the below result in my terminal: 
 
 ```
-aida.hi = "Hi!"
-aida.bye = "Bye!" 
+"Hi Aida!"
+"Bye Aida!" 
 ```
 
 **Attribute Accessors**
 
-Before jumping to class variables, I want to touch on attribute accessor methods. These handy macros work to take the extra effort out of always creating setter and getter methods. A setter method "sets" an instance variable equal to a value. It also gives us the ability to make changes to the instance variable, should this be necessary. The below demonstrates a setter method: 
+Before jumping to class variables, I want to touch on attribute accessor methods. These handy macros work to take the extra effort out of always creating setter (writer) and getter (reader) methods. A setter method "sets" an instance variable equal to a value. It also gives us the ability to make changes to the instance variable, should this be necessary. The below demonstrates a writer method: 
 
 ```
 def name=(my_name)
@@ -77,7 +78,7 @@ A quick note: `attr_writer` and `attr_reader` methods are also available to use 
 
 **Class Variables**
 
-Unlike an instance variable, a class variable is signified by the symbol: "@@". It works on the class in aggregate as opposed to an instance variable which is contained to itself in scope. A great example of a class variable in action is shown below:
+Unlike an instance variable, a class variable is instantiated by the symbol: "@@". It works on all instances of a class as opposed to an instance variable which only works on an instance of a class. A great example of a class variable in action is shown below:
 
 ```
 class Person
@@ -93,11 +94,11 @@ end
 end
 ```
 
-In this simple code snippet, I'm demonstrating that I'm creating a new class, People. Within this class, I have a class variable titled, "people". My desired functionality for this class variable is the aggregation of all instances created. In this case, each new "person" that is instantiated will get added via the shovel functionality into the class variable of "people". 
+In this simple code snippet, I'm demonstrating that I'm creating a new class, Person. Within this class, I have a class variable titled, "people". My desired functionality for this class variable is the aggregation of all instances created. In this case, each new "person" that is instantiated will get added via the shovel functionality into the class variable of "people". 
 
 **Class Methods and Instance Methods**
 
-Lastly, I'd like to touch on the differences between a class method and an instance method. An class method works on the entire class - that is its "scope". Looking at the below, leveraging our "Person" class, if I was to create a class method, it could look like this:
+Lastly, I'd like to touch on the differences between a class method and an instance method. An class method works on the entire class - that is its "scope". Looking at the below, leveraging our "Person" class, if I were to create a class method, it could look like this:
 
 ```
 class Person
@@ -125,5 +126,5 @@ In this case, the `.all_people` method, because it's being invoked on the self k
 
 An instance method, on the other hand, is exemplified by our "hi" method. When invoked, this method will output "Hi Aida!" into the terminal because I'm giving the method the opportunity to interpolate whatever variable its given via the argument input. 
 
-These are some of the many elements that must interact together in Object Oriented Ruby. They are all critical the build of a successful OO Ruby program. 
+These are some of the many elements that must interact together in Object Oriented Ruby. They are all critical to the build of a successful OO Ruby program. 
 
