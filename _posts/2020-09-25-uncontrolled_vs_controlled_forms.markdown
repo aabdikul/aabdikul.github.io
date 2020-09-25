@@ -35,7 +35,7 @@ In order to ensure that we see the values once state is changed, we finalize our
 `<p>Name: <input type="text" name="name" onChange={this.handleChange} value={this.state.name}/></p>`
 `<p><input type="submit"/></p>`
 
-This is an example of a controlled form: it derives its input values from state. In short, it gives developers control over the form values and renders them accordingly as a user interacts with the form through changes in state allowing state to be the single source of truth. Controlled forms are generally preferred to uncontrolled forms.
+This is an example of a controlled form: it derives its input values from state. In short, it gives control over the form values to the component's state and renders them accordingly as a user interacts with the form through changes in state and allowing state to be the single source of truth. Controlled forms are generally preferred to uncontrolled forms.
 
 Uncontrolled forms don't rely on state and require developers to engage directly with the DOM when it comes to input fields. Uncontrolled forms use `ref` tags and require a `defaultValue` to a controlled form's `value`. The `ref` tag is what is used to query the DOM for the value; it doesn't live in the state. 
 
