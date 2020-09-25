@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Uncontrolled vs. Controlled Forms"
-date:       2020-09-25 23:01:41 +0000
+date:       2020-09-25 19:01:42 -0400
 permalink:  uncontrolled_vs_controlled_forms
 ---
 
@@ -10,13 +10,13 @@ I wanted to write about the difference between uncontrolled and controlled forms
 
 When creating a form, especially in React where we use the HTML/JS hybrid JSX, we follow a similar pattern as we would in basic HTML:
 
-`<p>Name: <input type="text" name="name"/></p>`
-`<p><input type="submit"/></p>`
+* `<p>Name: <input type="text" name="name"/></p>`
+* `<p><input type="submit"/></p>`
 
 However, the key pieces come into play when I use the handler directly in the form to handle any changes to that form. 
 
-`<p>Name: <input type="text" name="name" onChange={this.handleChange}/></p>`
-`<p><input type="submit"/></p>`
+* `<p>Name: <input type="text" name="name" onChange={this.handleChange}/></p>`
+* `<p><input type="submit"/></p>`
 
 In my class component, I must then build my `handleChange` method to set my component's state to whatever it is that the user has put into the field. If I only have a single field, such as in the case above, I can set state by specifying the field's name from the form field. However, more often than not, we need to generalize to ensure that multiple fields can use the same handleChange method. Therefore, our method becomes: 
 
